@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Coink" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/secondary_color</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/sfpro_text_regular</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/primary_color</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <style name="CustomShapeButton">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/space_40</item>
+        <item name="cornerSizeTopRight">@dimen/space_40</item>
+        <item name="cornerSizeBottomLeft">@dimen/space_40</item>
+        <item name="cornerSizeBottomRight">@dimen/space_40</item>
+    </style>
+
+    <style name="Coink.BaseButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:height">@dimen/size_50</item>
+        <item name="shapeAppearanceOverlay">@style/CustomShapeButton</item>
+    </style>
+
+    <style name="MontserratBoldText" parent="Theme.Coink">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="AvenirRomanText" parent="Theme.Coink">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/avenir_lt_std_55_roman</item>
+    </style>
+
+    <style name="Coink.ButtonNumberPad" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">32sp</item>
+        <item name="elevation">0dp</item>
+        <item name="borderWidth">0dp</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">@color/secondary_text_color</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+</resources>

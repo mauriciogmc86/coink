@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.coink.features.phone.ui.PhoneNumberViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.coink.widgets.HeaderView
+            android:id="@+id/headerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:header_drawable="@drawable/ic_step_tab_first"
+            app:header_title="@string/phone_screen_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.coink.widgets.ItemCoinkTextHorizontal
+            android:id="@+id/coinkText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerView"
+            app:text_message="@string/phone_screen_message" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_number"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_56"
+            android:layout_marginStart="@dimen/space_24"
+            android:layout_marginEnd="@dimen/space_24"
+            android:background="@drawable/bg_edittext"
+            android:elevation="@dimen/elevation_10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/avenir_lt_std_55_roman"
+            android:inputType="none"
+            android:paddingStart="@dimen/space_12"
+            android:paddingEnd="@dimen/space_12"
+            android:textSize="24sp"
+            android:text="@={viewModel.phoneNumber}"
+            app:layout_constraintBottom_toTopOf="@+id/numberPad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coinkText"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.coink.widgets.NumberPad
+            android:id="@+id/numberPad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

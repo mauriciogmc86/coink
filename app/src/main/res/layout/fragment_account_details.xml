@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.coink.features.account.ui.AccountDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.coink.widgets.HeaderView
+            android:id="@+id/headerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:header_drawable="@drawable/ic_step_bar_second"
+            app:header_title="@string/account_detail_screen_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerView"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_24">
+
+                <com.coink.widgets.ItemCoinkTextHorizontal
+                    android:id="@+id/coinkText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text_message="@string/account_detail_screen_header_message"
+                    app:text_title="@string/account_detail_screen_header_title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/document_type_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:text="@string/account_detail_screen_document"
+                    android:textColor="@color/secondary_color"
+                    android:theme="@style/MontserratBoldText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/coinkText" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/document_type_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_document_type"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.documentTypeError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/document_type_text_view">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/document_type_drop_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:text="@={viewModel.validator.documentType}"
+                        android:nextFocusDown="@+id/document_number_edit_text"
+                        tools:ignore="LabelFor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/document_number_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_document_number"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.documentNumberError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/document_type_field">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/document_number_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:nextFocusDown="@+id/document_date_edit_text"
+                        android:text="@={viewModel.validator.documentNumber}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/document_date_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_expedition_date"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.expeditionDateError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/document_number_field">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/document_date_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:nextFocusDown="@+id/birth_date_edit_text"
+                        android:text="@={viewModel.validator.expeditionDate}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/birth_date_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_date_birth"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.birthDateError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/document_date_field">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/birth_date_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:nextFocusDown="@+id/gender_drop_down"
+                        android:text="@={viewModel.validator.birthDate}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/gender_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_gender"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.genderError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/birth_date_field">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/gender_drop_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:nextFocusDown="@+id/email_edit_text"
+                        android:text="@={viewModel.validator.gender}"
+                        tools:ignore="LabelFor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/account_settings_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:text="@string/account_detail_screen_account_config"
+                    android:textColor="@color/secondary_color"
+                    android:theme="@style/MontserratBoldText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_field" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_email"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.emailAddressError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account_settings_text_view">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:nextFocusDown="@+id/confirm_email_edit_text"
+                        android:text="@={viewModel.validator.emailAddress}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirm_email_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_confirm_email"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.confirmEmailAddressError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email_field">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/confirm_email_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:nextFocusDown="@+id/pin_edit_text"
+                        android:text="@={viewModel.validator.confirmEmailAddress}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/pin_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_security_pin"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.securityPinError}"
+                    app:errorEnabled="true"
+                    app:passwordToggleEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/confirm_email_field">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pin_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberPassword"
+                        android:maxLength="4"
+                        android:nextFocusDown="@+id/confirm_pin_edit_text"
+                        android:text="@={viewModel.validator.securityPin}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirm_pin_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:hint="@string/account_detail_screen_confirm_security_pin"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:error="@{viewModel.validator.confirmSecurityPinError}"
+                    app:errorEnabled="true"
+                    app:passwordToggleEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pin_field">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/confirm_pin_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberPassword"
+                        android:maxLength="4"
+
+                        android:text="@={viewModel.validator.confirmSecurityPin}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_next"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.onConfirm()}"
+                    android:text="@string/account_detail_screen_next"
+                    android:enabled="@{viewModel.validator.valid}"
+                    android:textColor="@color/secondary_color"
+                    android:theme="@style/Coink.BaseButton"
+                    app:backgroundTint="@color/primary_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/confirm_pin_field" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/loader"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black_transparency_color"
+            android:visibility="gone"
+            android:clickable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar_cyclic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:indeterminateTint="@color/primary_color"
+                android:minWidth="50dp"
+                android:minHeight="50dp" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

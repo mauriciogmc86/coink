@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_24"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_oink" />
+
+    <RelativeLayout
+        android:id="@+id/layout_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_24"
+        android:layout_marginEnd="@dimen/space_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_pic"
+        app:layout_constraintTop_toTopOf="@+id/imageView_pic">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_12"
+            android:theme="@style/MontserratBoldText"
+            tools:text="ESTAS MUY CERCA DE SER PARTE DE COINK." />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_title"
+            android:theme="@style/AvenirRomanText"
+            tools:text="Solo es necesario que leas detenidamente el contrato que se encuentra al final de esta pantalla y lo aceptes." />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/space_24"
+        android:background="@color/primary_color"
+        app:layout_constraintEnd_toEndOf="@+id/layout_text"
+        app:layout_constraintStart_toStartOf="@+id/imageView_pic"
+        app:layout_constraintTop_toBottomOf="@+id/layout_text" />
+</merge>

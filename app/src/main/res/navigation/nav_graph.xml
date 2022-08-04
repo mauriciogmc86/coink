@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onboadingFragment">
+
+    <fragment
+        android:id="@+id/onboadingFragment"
+        android:name="com.coink.features.onboarding.ui.OnboardingFragment"
+        android:label="OnboardingFragment"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/to_phoneNumberFragment"
+            app:destination="@id/phoneNumberFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneNumberFragment"
+        android:name="com.coink.features.phone.ui.PhoneNumberFragment"
+        android:label="PhoneNumberFragment"
+        tools:layout="@layout/fragment_phone_number">
+        <action
+            android:id="@+id/to_accountDetailFragment"
+            app:destination="@id/accountDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountDetailFragment"
+        android:name="com.coink.features.account.ui.AccountDetailFragment"
+        android:label="AccountDetailFragment"
+        tools:layout="@layout/fragment_account_details">
+        <action
+            android:id="@+id/to_endFragment"
+            app:destination="@id/endFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="phone_number"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.coink.features.end.ui.EndFragment"
+        android:label="EndFragment"
+        tools:layout="@layout/fragment_end">
+        <argument
+            android:name="account_data"
+            app:argType="com.coink.features.account.ui.models.AccountData" />
+        <action
+            android:id="@+id/action_endFragment_to_onboadingFragment"
+            app:destination="@id/onboadingFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/onboadingFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+</navigation>

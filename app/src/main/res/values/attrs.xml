@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="itemNumberRow">
+        <attr name="text_position_zero" format="string" localization="suggested" />
+        <attr name="text_position_one" format="string" localization="suggested" />
+        <attr name="text_position_two" format="string" localization="suggested" />
+    </declare-styleable>
+
+    <declare-styleable name="coinkTextView">
+        <attr name="text_title" format="string" localization="suggested" />
+        <attr name="text_message" format="string" localization="suggested" />
+        <attr name="icon_drawable" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="headerView">
+        <attr name="header_title" format="string" localization="suggested" />
+        <attr name="header_drawable" format="integer" />
+    </declare-styleable>
+</resources>
